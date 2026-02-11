@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Formulaire</title>
+    <style>
+        
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 50px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px ;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+           
+        }
+        
+       /* input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }*/
+        
+        textarea {
+            min-height: 90px;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            /*align-items: center;*/
+            margin-bottom: 20px;
+        }
+        
+        .checkbox-group input {
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .submit-btn {
+            background-color: #3011e2;
+            color: white;
+            border: none;
+            padding: 14px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #2e3235;
+        }
+        
+        .footer-note {
+            text-align: right;
+            margin-top: 20px;
+            color: #7f8c8d;
+            font-size: 15px;
+        }
+        .home {
+            background-color: #0606f3;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            width: 100%;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+        .home:hover {
+            background-color: #2e3235;
+        }
+       
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact Formulaire</h1>
+        <p class="description">Veuillez remplir ce formulaire et nous vous répondrons dès que possible.</p>
+        
+        <form id="contactForm" method="">
+            <div class="form-group">
+                <label for="name">Full Name <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="subject">Sujet</label>
+                <select id="subject" name="subject">
+                    <option value="">Select a sujet</option>
+                    <option value="general">a : vente de livre</option>
+                    <option value="support">b : </option>
+                    <option value="feedback">c</option>
+                    <option value="other">autre</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message">Message <span class="required">*</span></label>
+                <textarea id="message" name="message" required placeholder="Type your message here..."></textarea>
+            </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="newsletter" name="newsletter">
+                <label for="newsletter">sincrire</label>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+        <button onclick="location.href='HOME.html'" class="home">Home</button>
+        <p class="footer-note">Fields marked with <span class="required">*</span> are required.</p>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            const newsletter = document.getElementById('newsletter').checked;
+            
+           
+            if (!name || !email ) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            alert(`Thank you ${name}! Your message has been submitted.\n\nWe will respond to ${email} soon.`);
+            
+            // Reset the form
+            this.reset();
+        });
+    </script>
+</body>
+</html>

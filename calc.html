@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Addition Calculator</title>
+    <style>
+        .calculator {
+            width: 300px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 15px;
+            font-size: 24px;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        button {
+            padding: 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .equals {
+            grid-column: span 2;
+            background-color: #4CAF50;
+            color: white;
+        }
+        .clear {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="buttons">
+            <button onclick="addNumber('1')">1</button>
+            <button onclick="addNumber('2')">2</button>
+            <button onclick="addNumber('3')">3</button>
+            <button onclick="addOperator('+')">+</button>
+            <button onclick="addNumber('4')">4</button>
+            <button onclick="addNumber('5')">5</button>
+            <button onclick="addNumber('6')">6</button>
+            <button onclick="addOperator('-')">-</button>
+            <button onclick="addNumber('7')">7</button>
+            <button onclick="addNumber('8')">8</button>
+            <button onclick="addNumber('9')">9</button>
+            <button onclick="addOperator('*')">×</button>
+            <button onclick="addNumber('0')">0</button>
+            <button onclick="addNumber('.')">.</button>
+            <button onclick="calculate()" class="equals">=</button>
+            <button onclick="clearDisplay()" class="clear">C</button>
+            <button onclick="addOperator('/')">÷</button>
+        </div>
+    </div>
+
+    <script>
+        const display = document.getElementById('display');
+        let currentInput = '';
+        let operator = '';
+        let firstNumber = '';
+        let waitingForSecondNumber = false;
+
+        function addNumber(num) {
+            if (waitingForSecondNumber) {
+                currentInput = num;
+                waitingForSecondNumber = false;
+            } else {
+                currentInput += num;
+            }
+            updateDisplay();
+        }
+
+        function addOperator(op) {
+            if (currentInput === '' && op === '-') {
+                // Allow negative numbers
+                currentInput = '-';
+                updateDisplay();
+                return;
+            }
+            
+            if (currentInput === '') return;
+            
+            if (firstNumber !== '' && operator !== '' && !waitingForSecondNumber) {
+                calculate();
+            }
+            
+            firstNumber = currentInput;
+            operator = op;
+            waitingForSecondNumber = true;
+            updateDisplay();
+        }
+
+        function calculate() {
+            if (firstNumber === '' || operator === '' || currentInput === '') return;
+            
+            const num1 = parseFloat(firstNumber);
+            const num2 = parseFloat(currentInput);
+            let result = 0;
+            
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    break;
+            }
+            
+            // Show the full calculation
+            display.value = `${firstNumber} ${operator} ${currentInput} = ${result}`;
+            
+            // Reset for next calculation
+            currentInput = result.toString();
+            firstNumber = '';
+            operator = '';
+            waitingForSecondNumber = false;
+        }
+
+        function clearDisplay() {
+            currentInput = '';
+            firstNumber = '';
+            operator = '';
+            waitingForSecondNumber = false;
+            display.value = '';
+        }
+
+        function updateDisplay() {
+            if (waitingForSecondNumber) {
+                display.value = `${firstNumber} ${operator}`;
+            } else {
+                display.value = currentInput;
+            }
+        }
+
+        // Keyboard support
+        document.addEventListener('keydown', function(event) {
+            const key = event.key;
+            
+            if (key >= '0' && key <= '9') {
+                addNumber(key);
+            } else if (key === '.') {
+                addNumber('.');
+            } else if (key === '+') {
+                addOperator('+');
+            } else if (key === '-') {
+                addOperator('-');
+            } else if (key === '*') {
+                addOperator('*');
+            } else if (key === '/') {
+                event.preventDefault(); // Prevent default slash behavior
+                addOperator('/');
+            } else if (key === 'Enter' || key === '=') {
+                calculate();
+            } else if (key === 'Escape' || key === 'Delete') {
+                clearDisplay();
+            } else if (key === 'Backspace') {
+                currentInput = currentInput.slice(0, -1);
+                updateDisplay();
+            }
+        });
+    </script>
+</body>
+</html>

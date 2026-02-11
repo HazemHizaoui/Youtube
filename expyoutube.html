@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemple like YouTube</title>
+    <style>
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        body {
+            background-color: white;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .navv {
+            padding: 10px 20px;
+            position: fixed;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            top: 0;
+            box-sizing: border-box;
+            background-color: white;
+            z-index: 1000;
+        }
+
+        /* 🔴 UPDATED: YouTube logo image */
+        .logo img {
+            height: 30px;       /* Perfect size for header */
+            width: auto;
+            display: block;
+            cursor: pointer;
+        }
+        
+        .rechbarre {
+            width: 300px;
+            padding: 8px 20px;
+            border: 1px solid #ccc;
+            border-radius: 20px 0 0 20px;
+        }
+        
+        #rechh {
+            padding: 10px 20px;
+            background: #f8f8f8;
+            border: 1px solid #ccc;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+        }
+        
+        .flex {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        #cree, #sonn {
+            border: 1px solid #fffefe;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 20px;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        #pdp {
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: #ccc;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .up {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .rech {
+            margin-left: 500px;
+            display: flex;
+        }
+        
+        #pdp {
+            cursor: pointer;
+        }
+        
+        .videowet {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px;
+            padding-top: 80px;
+        }
+        
+        img {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .vids {
+            position: relative;
+            border: none;
+            border-radius: 2px;
+        }
+        
+        .vids:hover {
+            cursor: pointer;
+            transform: translateY(-2px);
+        }
+
+        .desc {
+            text-align: center;
+            padding: 10px 0;
+        }
+        
+        .logolinkhommeeee {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        #darkmoode {
+            border: 1px solid #fffefe;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 20px;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .dark {
+            background-color: black;
+            color: white;
+        }
+        
+        .minvid {
+            position: absolute;
+            bottom: 45px;
+            right: 2px;
+            background-color: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 4px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            z-index: 5;
+            pointer-events: none;
+            text-transform: none;
+            line-height: 1;
+        }
+
+      
+        
+        @media (max-width: 992px) {
+            .rech { margin-left: 200px; }
+            .videowet {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 15px;
+            }
+            img { height: 180px; }
+        }
+        
+        @media (max-width: 768px) {
+            .navv {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+            .flex {
+                width: 100%;
+                justify-content: space-between;
+            }
+            .rech {
+                margin-left: 0;
+                width: 100%;
+            }
+            .rechbarre { width: 100%; }
+            .videowet {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                margin: 15px;
+                padding-top: 140px;
+            }
+            img { height: 180px; }
+        }
+        
+        @media (max-width: 576px) {
+            .videowet {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin: 10px;
+                padding-top: 160px;
+            }
+            .navv { padding: 10px; }
+            .flex {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .logo { font-size: 24px; }
+            .rechbarre { padding: 8px 15px; }
+            #rechh { padding: 8px 15px; }
+            #cree, #sonn, #darkmoode {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+            img { height: 200px; }
+        }
+        
+        @media (max-width: 400px) {
+            .videowet { padding-top: 180px; }
+            img { height: 180px; }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navv">
+        <div class="flex">
+            <div class="logo">
+                <a href="HOME.html" class="logolinkhommeeee">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" 
+                         alt="YouTube Logo">
+                </a>
+            </div>
+            <div class="rech">
+                <input type="search" placeholder="Search" class="rechbarre">
+                <button id="rechh">🔍</button>
+            </div>
+        </div>
+
+        <div class="up">
+            <button id="darkmoode">🌙</button>
+            <button id="cree">⬇️ cree</button>
+            <button id="sonn">🔔</button>
+            <button id="pdp">H</button>
+        </div>
+    </nav>
+</header>
+    
+    <div class="videowet">
+        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><span class="minvid">33:00</span><div class="desc">jeffrey ep</div></div>
+        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><div class="desc">trump and jeff</div><span class="minvid">5:00</span></div>
+        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><div class="desc">jeffrei island</div><span class="minvid">59:00</span></div>
+        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><div class="desc">jeffrei island</div><span class="minvid">30:12</span></div>
+        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><div class="desc">jeffrei island</div><span class="minvid">55:12</span></div>
+        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><div class="desc">jeffrei island</div><span class="minvid">3:30</span></div>
+        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><div class="desc">jeffrei island</div><span class="minvid">1:20</span></div>
+        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><div class="desc">jeffrei island</div><span class="minvid">6:00</span></div>
+        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><div class="desc">jeffrei island</div><span class="minvid">7:00</span></div>
+    </div>
+    
+    <script>
+        const d = document.getElementById("darkmoode");
+        d.addEventListener("click", function() {
+            document.body.classList.toggle("dark");
+        });
+    </script>
+</body>
+</html>
