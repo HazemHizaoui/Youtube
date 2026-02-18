@@ -113,6 +113,27 @@
             object-fit: cover;
         }
 
+        .thumbnail-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .minvid {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background-color: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 4px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            z-index: 5;
+            pointer-events: none;
+            line-height: 1;
+        }
+
         .vids {
             padding: 5px;
             position: relative;
@@ -164,23 +185,6 @@
             color: white;
         }
         
-        .minvid {
-            position: absolute;
-            bottom: 89px;
-            right: 7px;
-            background-color: rgba(0, 0, 0, 0.85);
-            color: white;
-            padding: 4px 6px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-            z-index: 5;
-            pointer-events: none;
-            text-transform: none;
-            line-height: 1;
-        }
-
         .filter {
             background: #f2f2f2;
             padding: 4px 16px;
@@ -349,9 +353,6 @@
             }
         }
 
-
-
-
         @media (max-width: 1200px) {
             .videowet {
                 grid-template-columns: repeat(3, 1fr);
@@ -364,21 +365,20 @@
 
             .filterlist {
                 top: 65px;
-        }
+            }
 
-        #cree{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        #pdp{
-            border-radius: 50%;
-            width: 65px;
-            height: 40px;
-            align-items: center;
-            justify-content: center;
-        }
-
+            #cree{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #pdp{
+                border-radius: 50%;
+                width: 65px;
+                height: 40px;
+                align-items: center;
+                justify-content: center;
+            }
         }
 
         @media (max-width: 992px) {
@@ -399,10 +399,6 @@
             img {
                 height: 150px;
             }
-            
-            .minvid {
-                bottom: 75px;
-            }
         }
 
         @media (max-width: 768px) {
@@ -411,7 +407,6 @@
             }
             .filterlist{
                 top: 58px;
-
             }
             .rech {
                 margin: 0 10px;
@@ -450,11 +445,6 @@
                 padding: 8px 12px;
             }
             
-            .minvid {
-                bottom: 85px;
-                right: 6px;
-            }
-            
             #description {
                 left: 51px;
                 bottom: 35px;
@@ -473,12 +463,12 @@
                 font-size: 14px;
             }
             #pdp{
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            align-items: center;
-            justify-content: center;
-        }
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                align-items: center;
+                justify-content: center;
+            }
         }
 
         @media (max-width: 576px) {
@@ -539,11 +529,6 @@
                 height: 220px;
             }
             
-            .minvid {
-                bottom: 85px;
-                right: 7px;
-            }
-            
             #description {
                 left: 53px;
                 bottom: 35px;
@@ -569,7 +554,6 @@
             #sidebtn {
                 width: 32px;
                 height: 32px;
-                
             }
             
             .filter {
@@ -586,11 +570,6 @@
                 height: 200px;
             }
             
-            .minvid {
-                bottom: 80px;
-                right: 5px;
-            }
-            
             #description, #vues {
                 left: 48px;
             }
@@ -603,14 +582,14 @@
                 bottom: 12px;
             }
         }
+        
         @media (max-width: 320px) {
-        .logo img {
+            .logo img {
                 height: 25px;
             }
             #cree{
                 position: sticky;
                 bottom: 0;
-                
             }
             
             #sidebtn {
@@ -633,11 +612,6 @@
                 height: 200px;
             }
             
-            .minvid {
-                bottom: 90px;
-                right: 7px;
-            }
-            
             #description {
                 left: 55px;
                 bottom: 40px;
@@ -652,10 +626,7 @@
                 top: 110px;
                 height: calc(100vh - 110px);
             }
-            
         }
-
-
 
         #next{
             border-radius: 50%;
@@ -682,13 +653,6 @@
             cursor: pointer;
             position: absolute;
         }
-
-
-
-
-
-
-
     </style>
 </head>
 <body>
@@ -718,7 +682,8 @@
         </div>
     </nav>
 
-    <div class="filterlist"> <div class="prev"><button id="prev">&lt;</button></div>
+    <div class="filterlist"> 
+        <div class="prev"><button id="prev">&lt;</button></div>
         <div class="filter">Tous</div>
         <div class="filter">Musique</div>
         <div class="filter">Jeux</div>
@@ -769,73 +734,164 @@
     </div>
 </header>
     
-    <div class="videowet">
-        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><span class="minvid">12:00</span><div class="desc"><button id="pdpvid">A</button><span><b>Aymen Missaoui</b></span><span id="description">ce vid est sur jeff</span><span id="vues">5M vues • il ya 24h</span></div></div>
-        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><span class="minvid">7:00</span><div class="desc"><button id="pdpvid">B</button><span><b>Aymen missaoui</b></span><span id="description">ce vid est sur jeff</span><span id="vues">5M vues • il ya 24h</span></div></div>
-        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><span class="minvid">3:00</span><div class="desc"><button id="pdpvid">C</button><span><b>Hazem Hazem</b></span><span id="description">ce vid est sur jeff</span><span id="vues">5M vues • il ya 24h</span></div></div>
-        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><span class="minvid">43:00</span><div class="desc"><button id="pdpvid">D</button><span><b>Feres Cherif</b></span><span id="description">ce vid est sur jeff</span><span id="vues">5M vues • il ya 24h</span></div></div>
-        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><span class="minvid">13:00</span><div class="desc"><button id="pdpvid">E</button><span><b>Ezzine Smichi</b></span><span id="description">ce vid est sur jeff</span><span id="vues">5M vues • il ya 24h</span></div></div>
-        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><span class="minvid">23:00</span><div class="desc"><button id="pdpvid">F</button><span><b>Ezzine Smichi</b></span><span id="description">ce vid est sur jeff</span><span id="vues">5M vues • il ya 24h</span></div></div>
-        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><span class="minvid">2:00</span><div class="desc"><button id="pdpvid">G</button><span><b>Manel Hamdi</b></span><span id="description">ce vid est sur jeff</span><span id="vues">5M vues • il ya 24h</span></div></div>
-        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><span class="minvid">5:00</span><div class="desc"><button id="pdpvid">H</button><span><b>Si lahbib</b></span><span id="description">ce vid est sur jeff</span><span id="vues">5M vues • il ya 24h</span></div></div>
-        <div class="vids"><img src="thumbnail.jpg" class="imagevideowet"><span class="minvid">7:00</span><div class="desc"><button id="pdpvid">L</button><span><b>Rokkaya</b></span><span id="description">ce vid est sur jeff</span><span id="vues">5M vues • il ya 24h</span></div></div>
+<div class="videowet">
+    <div class="vids">
+        <div class="thumbnail-wrapper">
+            <img src="thumbnail.jpg" class="imagevideowet">
+            <span class="minvid">12:00</span>
+        </div>
+        <div class="desc">
+            <button id="pdpvid">A</button>
+            <span><b>Aymen Missaoui</b></span>
+            <span id="description">ce vid est sur jeff</span>
+            <span id="vues">5M vues • il ya 24h</span>
+        </div>
     </div>
+    <div class="vids">
+        <div class="thumbnail-wrapper">
+            <img src="thumbnail.jpg" class="imagevideowet">
+            <span class="minvid">7:00</span>
+        </div>
+        <div class="desc">
+            <button id="pdpvid">B</button>
+            <span><b>Aymen missaoui</b></span>
+            <span id="description">ce vid est sur jeff</span>
+            <span id="vues">5M vues • il ya 24h</span>
+        </div>
+    </div>
+    <div class="vids">
+        <div class="thumbnail-wrapper">
+            <img src="thumbnail.jpg" class="imagevideowet">
+            <span class="minvid">3:00</span>
+        </div>
+        <div class="desc">
+            <button id="pdpvid">C</button>
+            <span><b>Hazem Hazem</b></span>
+            <span id="description">ce vid est sur jeff</span>
+            <span id="vues">5M vues • il ya 24h</span>
+        </div>
+    </div>
+    <div class="vids">
+        <div class="thumbnail-wrapper">
+            <img src="thumbnail.jpg" class="imagevideowet">
+            <span class="minvid">43:00</span>
+        </div>
+        <div class="desc">
+            <button id="pdpvid">D</button>
+            <span><b>Feres Cherif</b></span>
+            <span id="description">ce vid est sur jeff</span>
+            <span id="vues">5M vues • il ya 24h</span>
+        </div>
+    </div>
+    <div class="vids">
+        <div class="thumbnail-wrapper">
+            <img src="thumbnail.jpg" class="imagevideowet">
+            <span class="minvid">13:00</span>
+        </div>
+        <div class="desc">
+            <button id="pdpvid">E</button>
+            <span><b>Ezzine Smichi</b></span>
+            <span id="description">ce vid est sur jeff</span>
+            <span id="vues">5M vues • il ya 24h</span>
+        </div>
+    </div>
+    <div class="vids">
+        <div class="thumbnail-wrapper">
+            <img src="thumbnail.jpg" class="imagevideowet">
+            <span class="minvid">23:00</span>
+        </div>
+        <div class="desc">
+            <button id="pdpvid">F</button>
+            <span><b>Ezzine Smichi</b></span>
+            <span id="description">ce vid est sur jeff</span>
+            <span id="vues">5M vues • il ya 24h</span>
+        </div>
+    </div>
+    <div class="vids">
+        <div class="thumbnail-wrapper">
+            <img src="thumbnail.jpg" class="imagevideowet">
+            <span class="minvid">2:00</span>
+        </div>
+        <div class="desc">
+            <button id="pdpvid">G</button>
+            <span><b>Manel Hamdi</b></span>
+            <span id="description">ce vid est sur jeff</span>
+            <span id="vues">5M vues • il ya 24h</span>
+        </div>
+    </div>
+    <div class="vids">
+        <div class="thumbnail-wrapper">
+            <img src="thumbnail.jpg" class="imagevideowet">
+            <span class="minvid">5:00</span>
+        </div>
+        <div class="desc">
+            <button id="pdpvid">H</button>
+            <span><b>Si lahbib</b></span>
+            <span id="description">ce vid est sur jeff</span>
+            <span id="vues">5M vues • il ya 24h</span>
+        </div>
+    </div>
+    <div class="vids">
+        <div class="thumbnail-wrapper">
+            <img src="thumbnail.jpg" class="imagevideowet">
+            <span class="minvid">7:00</span>
+        </div>
+        <div class="desc">
+            <button id="pdpvid">L</button>
+            <span><b>Rokkaya</b></span>
+            <span id="description">ce vid est sur jeff</span>
+            <span id="vues">5M vues • il ya 24h</span>
+        </div>
+    </div>
+</div>
     
-    <script>
-    
-        const darkModeBtn = document.getElementById("darkmoode");
-        if (darkModeBtn) {
-            darkModeBtn.addEventListener("click", function() {
-                document.body.classList.toggle("dark");
-            });
-        }
+<script>
+    const darkModeBtn = document.getElementById("darkmoode");
+    if (darkModeBtn) {
+        darkModeBtn.addEventListener("click", function() {
+            document.body.classList.toggle("dark");
+        });
+    }
 
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuBtn = document.getElementById('menuBtn');
+        const sidebar = document.querySelector('.sidebar');
         
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuBtn = document.getElementById('menuBtn');
-            const sidebar = document.querySelector('.sidebar');
-            
-            if (!menuBtn || !sidebar) return;
-            
-           
-            const overlay = document.createElement('div');
-            overlay.className = 'overlay';
-            document.body.appendChild(overlay);
-            
+        if (!menuBtn || !sidebar) return;
         
-            function toggleSidebar() {
-                sidebar.classList.toggle('open');
-                overlay.classList.toggle('show');
+        const overlay = document.createElement('div');
+        overlay.className = 'overlay';
+        document.body.appendChild(overlay);
+        
+        function toggleSidebar() {
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('show');
+        }
+        
+        menuBtn.addEventListener('click', toggleSidebar);
+        overlay.addEventListener('click', toggleSidebar);
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && sidebar.classList.contains('open')) {
+                toggleSidebar();
             }
-            
-      
-            menuBtn.addEventListener('click', toggleSidebar);
-            overlay.addEventListener('click', toggleSidebar);
-            
-       
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && sidebar.classList.contains('open')) {
-                    toggleSidebar();
-                }
-            });
-            
-    
-            const sideItems = document.querySelectorAll('.side-item');
-            sideItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    if (window.innerWidth <= 768) {
-                        toggleSidebar();
-                    }
-                });
-            });
-            
-           
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 768 && sidebar.classList.contains('open')) {
+        });
+        
+        const sideItems = document.querySelectorAll('.side-item');
+        sideItems.forEach(item => {
+            item.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
                     toggleSidebar();
                 }
             });
         });
-    </script>
+        
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768 && sidebar.classList.contains('open')) {
+                toggleSidebar();
+            }
+        });
+    });
+</script>
 </body>
 </html>
